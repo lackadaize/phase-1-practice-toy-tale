@@ -21,7 +21,7 @@ body {
   margin: 2rem;
 }
 
-.card {
+.card, .toy-card {
   text-align: center;
   border: grey solid 1px;
   padding: 1rem;
@@ -32,13 +32,13 @@ body {
   box-shadow: 3px 4px #e04b52
 }
 
-.toy-avatar {
+.toy-avatar, .toy-img {
   justify-self: center;
   height: 12rem;
   width: auto;
 }
 
-button {
+button, .toy-like-button {
   position: relative;
   background-color: #e04b52;
   border: none;
@@ -50,7 +50,7 @@ button {
   justify-self: center;
 }
 
-button:hover {
+button:hover, .toy-like-button:hover {
   background-color: whitesmoke;
   border: #e04b52 solid 1px;
   color: #e04b52;
