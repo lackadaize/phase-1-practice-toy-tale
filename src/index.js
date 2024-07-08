@@ -1,4 +1,4 @@
-//Original code
+// Original code
 let addToy = false
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -17,18 +17,20 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 // Modified code
-// Initial Get Request
+// Global JSON URL
+const toysUrl = "http://localhost:3000/toys"
+
 function Toys () {
-  const toysUrl = "http://localhost:3000/toys"
-  
+
   fetch(toysUrl)
-    .then(response => response.json())
-    .then((toys) => toys.forEach(loadToys))
-    .catch((error) => console.log(error))
-}
+  .then(response => response.json())
+  .then((toys) => toys.forEach(loadToys))
+  .catch((error) => console.log(error))
+  
 // HTML Elements, Content, and Attributes
 function loadToys (toys) {
-  console.log(toys)
+
+  // console.log(toys)
   const toyCard = document.createElement('div')
   toyCard.setAttribute('id',`toy ${toys.id}`)
   toyCard.setAttribute('class', 'toy-card card')
@@ -37,7 +39,7 @@ function loadToys (toys) {
   toyName.setAttribute('class', 'toy-name h2')
 
   const toyImage = document.createElement('img')
-  toyImage.setAttribute('class', 'toy-img img')
+  toyImage.setAttribute('class', 'toy-img toy-avatar img')
   toyImage.src = toys.image;
 
   const toyLikes = document.createElement('p')
@@ -50,12 +52,28 @@ function loadToys (toys) {
   toyLikeButton.textContent = "Like"
 
 // Append Elements to container
-const toyCollection = document.getElementById("toy-collection");
-toyCollection.appendChild(toyCard)
-toyCard.appendChild(toyName)
-toyCard.appendChild(toyImage)
-toyCard.appendChild(toyLikes)
-toyCard.appendChild(toyLikeButton)
+  const toyCollection = document.getElementById("toy-collection");
+  toyCollection.appendChild(toyCard)
+  toyCard.appendChild(toyName)
+  toyCard.appendChild(toyImage)
+  toyCard.appendChild(toyLikes)
+  toyCard.appendChild(toyLikeButton)
 }
 
-//
+// POST Toy Card via 'add-toy-form' element
+function postToys () {
+  console.log("Hello World!")
+}
+
+// PATCH Toy Card via 'add-toy-form' element
+
+function patchToys () {
+  console.log("Hello World!")
+}
+
+// Return internal functions
+return loadToys()
+// return postToys()
+// return patchToys()
+
+}

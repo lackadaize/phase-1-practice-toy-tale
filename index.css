@@ -48,6 +48,7 @@ button, .toy-like-button {
   color: whitesmoke;
   font-size: 18px;
   justify-self: center;
+  cursor: pointer;
 }
 
 button:hover, .toy-like-button:hover {
