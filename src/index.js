@@ -49,24 +49,34 @@ function Toys() {
     toyLikeButton.setAttribute('id', `${toy.id}`)
     toyLikeButton.setAttribute('class', 'toy-like-button button')
     toyLikeButton.textContent = "Like"
-    toyLikeButton.addEventListener('click', () => likeToys(toy.id)); // Pass toy.id as an argument when the button is clicked
 
     // Append Elements to container
-    const toyCollection = document.getElementById("toy-collection");
+    const toyCollection = document.getElementById("toy-collection")
     toyCollection.appendChild(toyCard)
     toyCard.appendChild(toyName)
     toyCard.appendChild(toyImage)
     toyCard.appendChild(toyLikes)
     toyCard.appendChild(toyLikeButton)
+
+    // Event Listeners
+    toyLikeButton.addEventListener('click', () => likeToys(toy.id))
+    // toyLikeButton.addEventListener('click', () => postToys(toy.id))
+  }
+
+  // PATCH Toy Card likes via 'add-toy-form' element
+  function likeToys(toyId) {
+    console.log(`Like button clicked for toy with id ${toyId}`)
   }
 
   // POST Toy Card via 'add-toy-form' element
-  function postToys() {
-    const addToyForm = document.querySelector(".add-toy-form");
-    addToyForm.addEventListener("submit", addToy);
+  function postToys () {
+    const addToyForm = document.querySelector(".add-toy-form")
+    addToyForm.addEventListener("submit", addToy)
 
     function addToy(event) {
       event.preventDefault()
+      const name = addToyForm.querySelector("input[name='name']").value
+      const img = addToyForm.querySelector("input[name='image']").value
       const headers = {
         method: "POST",
         headers:
@@ -84,15 +94,13 @@ function Toys() {
 
       fetch(toysUrl, headers)
         .then(response => response.json())
-        .then((toys) => toys.forEach(addToy))
+        .then((toys) => toys.forEach(newToy))
         .catch((error) => console.log(error))
-    }
-  }
 
-  // PATCH Toy Card likes via 'add-toy-form' element
-  function likeToys(toyId) {
-    console.log(`Like button clicked for toy with id ${toyId}`);
-    // Perform the necessary operations to update the likes for the toy with the given toyId
+        function newToy () {
+          console.log("Hello World!")
+        }
+    }
   }
 
   // Return internal functions
