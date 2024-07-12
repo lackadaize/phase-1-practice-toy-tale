@@ -23,24 +23,23 @@ const toysUrl = "http://localhost:3000/toys"
 function Toys () {
 
   fetch(toysUrl)
-  .then(response => response.json())
-  .then((toys) => toys.forEach(loadToys))
-  .catch((error) => console.log(error))
-  
-// HTML Elements, Content, and Attributes
-function loadToys (toys) {
+    .then(response => response.json())
+    .then((toys) => toys.forEach(loadToys))
+    .catch((error) => console.log(error))
 
-  // console.log(toys)
+function loadToys (toys) {
+// Create Elements and Attributes
   const toyCard = document.createElement('div')
   toyCard.setAttribute('id',`toy ${toys.id}`)
   toyCard.setAttribute('class', 'toy-card card')
 
   const toyName = document.createElement('h2')
   toyName.setAttribute('class', 'toy-name h2')
+  toyName.textContent = toys.name
 
   const toyImage = document.createElement('img')
   toyImage.setAttribute('class', 'toy-img toy-avatar img')
-  toyImage.src = toys.image;
+  toyImage.src = toys.image
 
   const toyLikes = document.createElement('p')
   toyLikes.setAttribute('class', 'toy-likes p')
@@ -65,15 +64,14 @@ function postToys () {
   console.log("Hello World!")
 }
 
-// PATCH Toy Card via 'add-toy-form' element
+// PATCH Toy Card likes via 'add-toy-form' element
 
-function patchToys () {
+function likeToys () {
   console.log("Hello World!")
 }
 
 // Return internal functions
-return loadToys()
-// return postToys()
-// return patchToys()
-
+loadToys    
+postToys();
+likeToys();
 }
