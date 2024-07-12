@@ -61,7 +61,33 @@ function loadToys (toys) {
 
 // POST Toy Card via 'add-toy-form' element
 function postToys () {
-  console.log("Hello World!")
+  const addToyForm = document.querySelector(".add-toy-form");
+  addToyForm.addEventListener("submit", addToy);
+  
+  function addToy (event) {
+    event.preventDefault()
+    const headers = {
+      method: "POST",
+      headers:
+      {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+
+      body: JSON.stringify({
+        name: event.target[0].value,
+        image: event.target[1].value,
+        likes: 0,
+      })
+    }
+
+    fetch(toysUrl, headers)
+    .then(response => response.json())
+    .then((toys) => toys.forEach(addToy))
+    .catch((error) => console.log(error))
+
+    console.log(addToy)
+  }
 }
 
 // PATCH Toy Card likes via 'add-toy-form' element
