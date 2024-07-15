@@ -60,12 +60,31 @@ function Toys() {
 
     // Event Listeners
     toyLikeButton.addEventListener('click', () => likeToys(toy.id))
-    // toyLikeButton.addEventListener('click', () => postToys(toy.id))
   }
 
   // PATCH Toy Card likes via 'add-toy-form' element
   function likeToys(toyId) {
-    console.log(`Like button clicked for toy with id ${toyId}`)
+    // let like = parseInt(document.getElementById(`toy ${id}`).querySelector("p").textContent)
+    // like = like + 1
+  
+    // fetch(`http://localhost:3000/toys/${toyId.id}`, {
+    //   method: "PATCH",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Accept: "application/json"
+    //   },
+    //   body: JSON.stringify({
+    //     "likes": like
+    //   })
+    // })
+    //   .then(function (response) {
+    //     return response.json()
+    //   })
+    //   .then(function (data) {
+    //     toyId.parentNode.querySelector("p").textContent = `${data.likes} likes`
+    //   })
+  
+    console.log(`Like button clicked for toy with id ${toyId.id}`)
   }
 
   // POST Toy Card via 'add-toy-form' element
@@ -96,13 +115,8 @@ function Toys() {
       .then((response) => response.json())
       .then((newToy) => {loadToys(newToy)})
       .catch((error) => console.log(error))
-
-        function newToy () {
-          console.log("Hello World!")
-        }
     }
   }
 
-  // Return internal functions
   postToys()
 }
