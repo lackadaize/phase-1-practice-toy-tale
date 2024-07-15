@@ -93,9 +93,9 @@ function Toys() {
       }
 
       fetch(toysUrl, headers)
-        .then(response => response.json())
-        .then((toys) => toys.forEach(newToy))
-        .catch((error) => console.log(error))
+      .then((response) => response.json())
+      .then((newToy) => {loadToys(newToy)})
+      .catch((error) => console.log(error))
 
         function newToy () {
           console.log("Hello World!")
